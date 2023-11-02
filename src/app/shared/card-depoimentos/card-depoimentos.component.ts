@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Depoimento } from 'src/app/core/types/type';
 
 @Component({
   selector: 'app-card-depoimentos',
@@ -6,12 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-depoimentos.component.scss'],
 })
 export class CardDepoimentosComponent {
-  depoimento: string = `
-    Recomendo fortemente a agência de viagens Jornada.
-    Eles oferecem um serviço personalizado e de alta qualidade
-    que excedeu minhas expectativas em minha última viagem.
-  `;
-  autoria: string = 'Mariana Faustino';
-  src = 'assets/imagens/avatar3.png';
-  alt = 'Avatar da pessoa autora do depoimento';
+  @Input({ required: true }) depoimento!: Depoimento;
 }

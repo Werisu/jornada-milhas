@@ -13,9 +13,10 @@
   </div>
   <h2>Depoimentos</h2>
   <div class="card-wrapper">
-    <app-card-depoimentos></app-card-depoimentos>
-    <app-card-depoimentos></app-card-depoimentos>
-    <app-card-depoimentos></app-card-depoimentos>
+    <app-card-depoimentos
+      *ngFor="let item of depoimentos | async"
+      [depoimento]="item"
+    ></app-card-depoimentos>
   </div>
 </app-container>
 <app-banner

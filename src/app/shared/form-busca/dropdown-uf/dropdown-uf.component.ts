@@ -12,18 +12,17 @@ import { UnidadeFederativa } from 'src/app/core/types/type';
 export class DropdownUfComponent implements OnInit {
   @Input() label = '';
   @Input() iconePrefix = '';
+  @Input({ required: true }) control!: FormControl;
 
   ufs: UnidadeFederativa[] = [];
-
-  control = new FormControl('');
-  filteredOptions!: Observable<UnidadeFederativa[]>;
+  filteredOptions$?: Observable<UnidadeFederativa[]>;
 
   constructor(private unidadeFederativaService: UnidadeFederativaService) {}
   ngOnInit(): void {
     this.getUfs();
-    this.filteredOptions = this.control.valueChanges.pipe(
+    this.filteredOptions$ = this.control.valueChanges.pipe(
       startWith(''),
-      map((value) => this._filter(value || ''))
+      map((value) => this.filtrarUfs(value))
     );
   }
 
@@ -35,11 +34,11 @@ export class DropdownUfComponent implements OnInit {
     });
   }
 
-  private _filter(value: string): UnidadeFederativa[] {
-    const filterValue = value.toLowerCase();
-
-    return this.ufs.filter((option) =>
-      option.nome.toLowerCase().includes(filterValue)
+  filtrarUfs(value: string): UnidadeFederativa[] {
+    const valorFiltrado = value?.toLowerCase();
+    const result = this.ufs.filter((estado) =>
+      estado.nome.toLowerCase().includes(valorFiltrado)
     );
+    return result;
   }
 }

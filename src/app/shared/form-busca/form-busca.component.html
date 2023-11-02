@@ -32,6 +32,7 @@
       <app-dropdown-uf
         label="Origem"
         iconePrefix="flight_takeoff"
+        [control]="formBuscarService.obterControle('origem')"
       ></app-dropdown-uf>
       <button mat-icon-button>
         <mat-icon>sync_alt</mat-icon>
@@ -39,6 +40,7 @@
       <app-dropdown-uf
         label="Destino"
         iconePrefix="flight_land"
+        [control]="formBuscarService.obterControle('origem')"
       ></app-dropdown-uf>
 
       <mat-form-field class="input-container" appearance="outline">
