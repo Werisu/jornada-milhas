@@ -10,3 +10,10 @@ export type UnidadeFederativa = {
   nome: string;
   sigla: string;
 };
+
+export type Depoimento = {
+  id: number;
+  texto: string;
+  autor: string;
+  avatar: string;
+};
