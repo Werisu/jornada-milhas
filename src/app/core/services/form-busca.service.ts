@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 /**
  * Serviço que controla o formulário para ser injetado em todos os componentes onde há necessidade de manipulá-lo.
@@ -12,6 +12,8 @@ export class FormBuscaService {
   formBusca: FormGroup;
 
   constructor() {
-    this.formBusca = new FormGroup({});
+    this.formBusca = new FormGroup({
+      somenteIda: new FormControl(false),
+    });
   }
 }
