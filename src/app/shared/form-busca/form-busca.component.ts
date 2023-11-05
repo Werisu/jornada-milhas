@@ -8,4 +8,8 @@ import { FormBuscaService } from 'src/app/core/services/form-busca.service';
 })
 export class FormBuscaComponent {
   constructor(public formBuscarService: FormBuscaService) {}
+
+  buscar() {
+    console.log(this.formBuscarService.formBusca.getRawValue());
+  }
 }
